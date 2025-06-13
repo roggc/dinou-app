@@ -1,6 +1,6 @@
 // src/posts-server/page.tsx
 
-import Suspense from "react-enhanced-suspense";
+import { Suspense } from "react";
 import { getPost } from "./get-post";
 import Post from "./post";
 import type { PostType } from "./post";

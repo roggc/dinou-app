@@ -1,6 +1,6 @@
 "use client";
 
-import Suspense from "react-enhanced-suspense";
+import { Suspense } from "react";
 import Counter from "./counter";
 
 export default function Page({
