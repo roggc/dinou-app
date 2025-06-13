@@ -16,6 +16,10 @@ dinou main features are:
 
 - Pure React 19: Server Functions, `Suspense`, Server Components, ...
 
+- TypeScript or JavaScript
+
+- Full control and customization through the command `npm run eject`.
+
 ## Table of contents
 
 - [Routing system, layouts, pages, not found pages, ...](#routing-system-layouts-pages-not-found-pages-)
@@ -59,6 +63,10 @@ dinou main features are:
   - [Layouts](#layouts)
 
   - [Not Found Handling](#not-found-handling)
+
+- [How to run it](#how-to-run-it)
+
+- [Eject dinou](#eject-dinou)
 
 ## Routing system, layouts, pages, not found pages, ...
 
@@ -790,3 +798,7 @@ The routing system is file-based and supports static routes, dynamic routes, opt
 Run `npm run dev` to start the app in development mode. Wait for the logs of Webpack and `Listening on port <port>` to load the page on your browser.
 
 Run `npm run build` to build the app and `npm start` to run it.
+
+## Eject dinou
+
+- You can eject dinou with the command `npm run eject`. This will copy the files defining dinou in the root folder of the project (grouped in a `dinou` folder). You will have full control and customization capabilities.
