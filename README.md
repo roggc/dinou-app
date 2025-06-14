@@ -10,9 +10,11 @@ dinou main features are:
 
 - File-based routing system.
 
-- SSR
+- SSR (Server Side Rendering)
 
-- SSG
+- SSG (Static Site Generation)
+
+- ISR (Incremental Static Regeneration)
 
 - Pure React 19: Server Functions, `Suspense`, Server Components, ...
 
@@ -82,7 +84,7 @@ dinou main features are:
 
 ## page_functions.ts (or `.tsx`, `.js`, `.jsx`)
 
-`page_functions.ts` is a file for defining three diferent possible functions. These are:
+`page_functions.ts` is a file for defining four diferent possible functions. These are:
 
 - `getProps`: a function to fetch data in the server and pass this data as props to the page component and the root layout (if exists).
 
@@ -121,6 +123,14 @@ dinou main features are:
   ```typescript
   export function dynamic() {
     return true;
+  }
+  ```
+
+- `revalidate`: this function is for when we want to revalidate data fetched in SSG.
+
+  ```typescript
+  export function revalidate() {
+    return 60000; // ms
   }
   ```
 
@@ -415,7 +425,7 @@ Pages in **dynamic routes** (e.g. `/[id]`, or `/[[id]]`, `[...id]`, `[[...id]]`)
 
 ## `page_functions.ts` (revisited)
 
-The framework supports a `page_functions.ts` (or `.tsx`, `.jsx`, `.js`) file in any route directory to define route-specific logic, such as static path generation, dynamic rendering control, and custom page and root layout props.
+The framework supports a `page_functions.ts` (or `.tsx`, `.jsx`, `.js`) file in any route directory to define route-specific logic, such as static path generation, dynamic rendering control, revalidation of fetched data in SSG, and custom page and root layout props.
 
 - Supported Functions:
 
@@ -424,6 +434,8 @@ The framework supports a `page_functions.ts` (or `.tsx`, `.jsx`, `.js`) file in 
   - **`getProps`**: This is where you can fetch your data. Fetches or computes additional props for a page or root layout.
 
   - **`dynamic`**: Controls whether a route is dynamically rendered (bypassing SSG).
+
+  - **`revalidate`**: Specifies a time in ms for when we want to revalidate data fetched during SSG.
 
 - Example:
 
@@ -446,6 +458,10 @@ The framework supports a `page_functions.ts` (or `.tsx`, `.jsx`, `.js`) file in 
     // Force dynamic rendering (skip SSG) if needed
     return false; // Set to true to bypass SSG
   }
+
+  export function revalidate() {
+    return 60000;
+  }
   ```
 
 - How It Works:
@@ -455,6 +471,8 @@ The framework supports a `page_functions.ts` (or `.tsx`, `.jsx`, `.js`) file in 
   - `getProps`: The returned props are merged with `params` and `query` and passed to the `page.tsx` component. The same for the root layout (if exists).
 
   - `dynamic`: If `dynamic() { return true; }`, the route is rendered dynamically at request time, bypassing SSG.
+
+  - `revalidate`: The returned time by this function marks when a statically generated page will be regenerated in the background (ISR or Incremental Static Regeneration).
 
 - Usage in a page:
 
