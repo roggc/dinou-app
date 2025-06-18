@@ -1,6 +1,7 @@
 "use client";
 
 import type { ReactNode } from "react";
+import "./global.css";
 
 export default function Layout({ children }: { children: ReactNode }) {
   return (
@@ -26,6 +27,7 @@ export default function Layout({ children }: { children: ReactNode }) {
           href="/favicon-16x16.png"
         />
         <link rel="manifest" href="/site.webmanifest"></link>
+        <link href="/styles.css" rel="stylesheet"></link>
       </head>
       <body>{children}</body>
     </html>
