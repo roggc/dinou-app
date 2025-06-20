@@ -1,7 +1,7 @@
 "use client";
 
-import styles from "./page.module.css";
-import dinouLogo from "./images/dinou.png";
+import styles from "@/page.module.css";
+import dinouLogo from "@/images/dinou.png";
 
 export default function Page() {
   return (
