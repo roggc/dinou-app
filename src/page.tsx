@@ -1,7 +1,7 @@
 "use client";
 
 import styles from "@/page.module.css";
-import dinouLogo from "@/images/dinou.png";
+import dinouLogo from "@/assets/dinou.png";
 import Counter from "@/components/counter";
 
 export default function Page() {

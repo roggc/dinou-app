@@ -27,3 +27,5 @@ declare module "*.webp" {
   const value: string;
   export default value;
 }
+
+// add the rest of used asset types
