@@ -14,12 +14,12 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "dinou": "^1.10.1",
-    "react": "^19.1.0",
-    "react-dom": "^19.1.0"
+    "dinou": "^2.0.0",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1"
   },
   "devDependencies": {
-    "@types/react": "^19.1.8",
-    "@types/react-dom": "^19.1.6"
+    "@types/react": "^19.1.10",
+    "@types/react-dom": "^19.1.7"
   }
 }
