@@ -14,9 +14,10 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "dinou": "^2.0.3",
+    "dinou": "^2.1.1",
     "react": "^19.1.1",
-    "react-dom": "^19.1.1"
+    "react-dom": "^19.1.1",
+    "react-enhanced-suspense": "^5.0.0"
   },
   "devDependencies": {
     "@types/react": "^19.1.10",
