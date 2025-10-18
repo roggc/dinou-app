@@ -1,7 +1,7 @@
 "use client";
 
 import type { ReactNode } from "react";
-import "./global.css";
+import "./globals.css";
 
 export default function Layout({ children }: { children: ReactNode }) {
   return (
