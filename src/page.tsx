@@ -11,7 +11,7 @@ export default function Page() {
     <div className={`text-red-500 test1 ${styles.test2} h-screen`}>
       <img src={dinouLogo} alt="Dinou Logo" className="w-32" />
       <Suspense fallback={<div>Loading user...</div>} resourceId="user">
-        {user()}
+        {() => user()}
       </Suspense>
       hi world!
       <Counter />
