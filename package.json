@@ -8,13 +8,19 @@
     "dev": "dinou dev",
     "build": "dinou build",
     "start": "dinou start",
+    "dev:rollup": "dinou dev:rollup",
+    "build:rollup": "dinou build:rollup",
+    "start:rollup": "dinou start:rollup",
+    "dev:webpack": "dinou dev:webpack",
+    "build:webpack": "dinou build:webpack",
+    "start:webpack": "dinou start:webpack",
     "eject": "dinou eject"
   },
   "keywords": [],
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "dinou": "^2.4.1",
+    "dinou": "^3.0.0",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "react-enhanced-suspense": "^5.0.0"
