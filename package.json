@@ -20,7 +20,7 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "dinou": "^4.0.0",
+    "dinou": "^4.0.1",
     "react": "^19.2.3",
     "react-dom": "^19.2.3",
     "react-enhanced-suspense": "^5.0.0"
