@@ -28,8 +28,8 @@ export default function Layout({ children }: { children: ReactNode }) {
           sizes="16x16"
           href="/favicon-16x16.png"
         />
-        <link rel="manifest" href="/site.webmanifest"></link>
-        <link href="/styles.css" rel="stylesheet"></link>
+        <link rel="manifest" href="/site.webmanifest" />
+        <link href="/styles.css" rel="stylesheet" precedence="default" />
       </head>
       <body>{children}</body>
     </html>
