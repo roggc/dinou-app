@@ -2,7 +2,7 @@
 
 This project was bootstrapped with `create-dinou`.
 
-It is a Full-Stack React 19 application configured with Server Components, Streaming SSR, and Hybrid Rendering.
+It is a lightweight-ejectable Full-Stack React 19 application configured with Server Components, Server Functions, Streaming SSR, and Hybrid Rendering.
 
 ## 🚀 Getting Started
 
@@ -22,7 +22,7 @@ Dinou uses a **file-system based router**. Your file structure defines your URL 
 
 ```text
 .
-├── public/          # Static assets (images, fonts, etc.)
+├── public/          # Dev build output folder (generated)
 ├── src/
 │   ├── components/  # Shared React components
 │   ├── layout.tsx   # Root layout (wraps all pages)
@@ -40,16 +40,29 @@ Dinou uses a **file-system based router**. Your file structure defines your URL 
 
 ## 🛠️ Scripts
 
-- `npm run dev`: Starts the development server with HMR.
-- `npm run build`: Builds the app for production (generates SSG pages).
-- `npm start`: Starts the production server.
+Dinou allows running the application using Webpack, Rollup, or Esbuild (default).
+
+- **Development:**
+  - `npm run dev` (or `npm run dev:esbuild`): Starts the development server using Esbuild.
+  - `npm run dev:rollup`: Starts the development server using Rollup.
+  - `npm run dev:webpack`: Starts the development server using Webpack.
+- **Production Build:**
+  - `npm run build` (or `npm run build:esbuild`): Builds and compiles static pages using Esbuild.
+  - `npm run build:rollup`: Builds and compiles static pages using Rollup.
+  - `npm run build:webpack`: Builds and compiles static pages using Webpack.
+- **Production Start:**
+  - `npm start` (or `npm run start:esbuild`): Runs the Esbuild built app.
+  - `npm run start:rollup`: Runs the Rollup built app.
+  - `npm run start:webpack`: Runs the Webpack built app.
 
 ## ⚡ Key Features Available
 
-- **React Server Components:** Fetch data directly in your components using `async/await`.
-- **Server Functions:** Execute server-side logic from the client without API endpoints.
-- **Hybrid Rendering:** Automatic switching between Static (SSG) and Dynamic (SSR) rendering.
-- **Styling:** CSS Modules and Tailwind CSS (if selected) are supported out of the box.
+- **React Server Components:** Native integration of React 19 Server Components, streaming HTML/RSC payloads progressively using `renderToPipeableStream` and Suspense.
+- **Server Functions:** Functions marked with `"use server"` that execute on the server and can be called from client components. Supports returning rendered React components (Server or Client) directly to the client.
+- **Hybrid Rendering:** Static by default (SSG). Bypasses static files and evaluates dynamically at request time if the request accesses headers, cookies, or query parameters.
+- **Client Router:** Client-side soft navigation with directory-first relative routing and prefetching on `<Link>` hover.
+- **Bundler Agnostic:** Supports Webpack, Rollup, and Esbuild as build engines, allowing you to choose your preferred compilation integration.
+- **Styling:** CSS Modules and Tailwind CSS are supported out of the box.
 
 ## 📚 Learn More
 
