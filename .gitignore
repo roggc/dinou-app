@@ -1,7 +1,3 @@
 node_modules
-dist2
-dist3
-public
-react_client_manifest
-server_functions_manifest
+.dinou
 .env
