@@ -22,7 +22,7 @@ Dinou uses a **file-system based router**. Your file structure defines your URL 
 
 ```text
 .
-├── public/          # Dev build output folder (generated)
+├── favicons/        # Static favicon assets
 ├── src/
 │   ├── components/  # Shared React components
 │   ├── layout.tsx   # Root layout (wraps all pages)
