@@ -10,16 +10,17 @@ import {
 } from "react";
 import dinouLogo from "@/example-to-delete/assets/dinou.png";
 import reactLogo from "@/example-to-delete/assets/react-logo.svg";
-import { FlowCanvas, FlowCanvasFallback } from "./flow-canvas";
-import { SynthView, SynthViewFallback } from "./synth-view";
-import { RscCounterView, RscCounterViewFallback } from "./rsc-counter-view";
-import { ActionsView, ActionsViewFallback } from "./actions-view";
-import { StreamingLabView, StreamingLabViewFallback } from "./streaming-lab-view";
-import { ReactiveCatalogView, ReactiveCatalogViewFallback } from "./reactive-catalog-view";
-import { ServerSlotView, ServerSlotViewFallback } from "./server-slot-view";
-import { ProgressiveActionsView, ProgressiveActionsViewFallback } from "./progressive-actions-view";
-import { ContextView, ContextViewFallback } from "./context-view";
-import type { TaskItem } from "@/example-to-delete/server-functions/actions-demo";
+import { FlowCanvas, FlowCanvasFallback } from "./01-particles/flow-canvas";
+import { SynthView, SynthViewFallback } from "./02-synth/synth-view";
+import { RscCounterView, RscCounterViewFallback } from "./03-rsc-suspense/rsc-counter-view";
+import { ActionsView, ActionsViewFallback } from "./04-optimistic-tasks/actions-view";
+import { StreamingLabView, StreamingLabViewFallback } from "./05-streaming-lab/streaming-lab-view";
+import { ReactiveCatalogView, ReactiveCatalogViewFallback } from "./06-reactive-catalog/reactive-catalog-view";
+import { ServerSlotView, ServerSlotViewFallback } from "./07-rsc-slots/server-slot-view";
+import { ProgressiveActionsView, ProgressiveActionsViewFallback } from "./08-progressive-forms/progressive-actions-view";
+import { ContextView, ContextViewFallback } from "./09-server-context/context-view";
+import { PatternView, PatternViewFallback } from "./10-dinou-pattern/pattern-view";
+import type { TaskItem } from "./04-optimistic-tasks/server-functions/actions-demo";
 
 type UseCase =
   | "particles"
@@ -30,7 +31,8 @@ type UseCase =
   | "catalog"
   | "slot"
   | "progressive"
-  | "context";
+  | "context"
+  | "pattern";
 
 interface NewProposal5PageProps {
   initialTasks?: TaskItem[];
@@ -157,7 +159,7 @@ export default function NewProposal5Page({ initialTasks, serverSlot }: NewPropos
               Demonstrations &amp; Use Cases
             </span>
             <span className="text-sm font-medium text-slate-500 hidden sm:inline">
-              / 9 Live Scenarios
+              / 10 Live Scenarios
             </span>
           </div>
 
@@ -324,6 +326,24 @@ export default function NewProposal5Page({ initialTasks, serverSlot }: NewPropos
                 9. Server Context
               </span>
             </button>
+
+            <button
+              onClick={() => switchCase("pattern")}
+              className="relative px-3 py-1.5 rounded-lg transition cursor-pointer text-xs font-sans font-medium whitespace-nowrap shrink-0"
+            >
+              {activeCase === "pattern" && (
+                <ViewTransition name="proposal5-tab-pill">
+                  <span className="absolute inset-0 bg-white rounded-lg shadow-xs border border-slate-200/90" />
+                </ViewTransition>
+              )}
+              <span
+                className={`relative z-10 transition-colors font-sans font-medium ${
+                  activeCase === "pattern" ? "text-slate-900" : "text-slate-500 hover:text-slate-800"
+                }`}
+              >
+                10. Dinou Pattern
+              </span>
+            </button>
           </div>
         </div>
       </header>
@@ -409,6 +429,15 @@ export default function NewProposal5Page({ initialTasks, serverSlot }: NewPropos
               <Activity mode={activeCase === "context" ? "visible" : "hidden"}>
                 <ReactSuspense fallback={<ContextViewFallback />}>
                   <ContextView />
+                </ReactSuspense>
+              </Activity>
+            </div>
+
+            {/* Tab 10: Dinou Pattern */}
+            <div className="w-full" style={{ display: activeCase === "pattern" ? "block" : "none" }}>
+              <Activity mode={activeCase === "pattern" ? "visible" : "hidden"}>
+                <ReactSuspense fallback={<PatternViewFallback />}>
+                  <PatternView />
                 </ReactSuspense>
               </Activity>
             </div>

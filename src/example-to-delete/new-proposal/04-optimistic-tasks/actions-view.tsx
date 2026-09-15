@@ -7,7 +7,7 @@ import {
   deleteTaskAction,
   resetTasksAction,
   type TaskItem,
-} from "@/example-to-delete/server-functions/actions-demo";
+} from "./server-functions/actions-demo";
 
 type OptimisticAction =
   | { type: "add"; task: TaskItem }
@@ -29,16 +29,18 @@ interface ActionsViewProps {
   initialTasks?: TaskItem[];
 }
 
+const DEFAULT_TASKS: TaskItem[] = [
+  { id: "1", title: "Stream Flight RSC without blocking TTFB", category: "Server", completed: true, status: "synced" },
+  { id: "2", title: "Leverage useOptimistic for 0ms Task mutations", category: "React 19", completed: false, status: "synced" },
+  { id: "3", title: "Explore Dinou v6 native Server Actions", category: "Framework", completed: false, status: "synced" },
+];
+
 export function ActionsView({ initialTasks }: ActionsViewProps) {
   const formRef = useRef<HTMLFormElement>(null);
 
   // 1. Task Board State (hydrated from Server Component or default fallback)
   const [tasks, setTasks] = useState<TaskItem[]>(
-    initialTasks !== undefined ? initialTasks : [
-      { id: "1", title: "Stream Flight RSC without blocking TTFB", category: "Server", completed: true, status: "synced" },
-      { id: "2", title: "Leverage useOptimistic for 0ms Task mutations", category: "React 19", completed: false, status: "synced" },
-      { id: "3", title: "Explore Dinou v6 native Server Actions", category: "Framework", completed: false, status: "synced" },
-    ]
+    initialTasks !== undefined ? initialTasks : DEFAULT_TASKS
   );
 
   // 2. Mutation Lifecycle Log for real-time visual telemetry
@@ -55,7 +57,7 @@ export function ActionsView({ initialTasks }: ActionsViewProps) {
   // 3. React 19 useOptimistic hook
   const [optimisticTasks, setOptimisticTasks] = useOptimistic(
     tasks,
-    (currentTasks: TaskItem[], action: OptimisticAction) => {
+    (currentTasks: TaskItem[], action: OptimisticAction): TaskItem[] => {
       switch (action.type) {
         case "add": {
           const exists = currentTasks.some(
@@ -71,11 +73,7 @@ export function ActionsView({ initialTasks }: ActionsViewProps) {
         case "delete":
           return currentTasks.filter((t) => t.id !== action.id);
         case "reset":
-          return [
-            { id: "1", title: "Stream Flight RSC without blocking TTFB", category: "Server", completed: true, status: "synced" },
-            { id: "2", title: "Leverage useOptimistic for 0ms Task mutations", category: "React 19", completed: false, status: "synced" },
-            { id: "3", title: "Explore Dinou v6 native Server Actions", category: "Framework", completed: false, status: "synced" },
-          ];
+          return DEFAULT_TASKS;
         default:
           return currentTasks;
       }
@@ -240,13 +238,7 @@ export function ActionsView({ initialTasks }: ActionsViewProps) {
 
   const handleReset = () => {
     const startTime = performance.now();
-    const INITIAL_DEFAULTS: TaskItem[] = [
-      { id: "1", title: "Stream Flight RSC without blocking TTFB", category: "Server", completed: true, status: "synced" },
-      { id: "2", title: "Leverage useOptimistic for 0ms Task mutations", category: "React 19", completed: false, status: "synced" },
-      { id: "3", title: "Explore Dinou v6 native Server Actions", category: "Framework", completed: false, status: "synced" },
-    ];
-
-    setTasks(INITIAL_DEFAULTS);
+    setTasks(DEFAULT_TASKS);
     setSyncingIds(new Set());
 
     setLastLog({

@@ -4,7 +4,7 @@ import { useState, useEffect, useTransition } from "react";
 import {
   getServerTelemetry,
   setServerBadgeCookie,
-} from "@/example-to-delete/server-functions/context-demo";
+} from "./server-functions/context-demo";
 
 interface TelemetryData {
   host: string;

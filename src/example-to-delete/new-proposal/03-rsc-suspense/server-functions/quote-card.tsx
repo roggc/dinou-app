@@ -1,6 +1,6 @@
 "use server";
 
-import QuoteCard from "@/example-to-delete/components/quote-card";
+import QuoteCard from "../components/quote-card";
 
 export async function quoteCard() {
   // Simulate fetching data from a database or API
