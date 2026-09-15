@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, Suspense, use, type ReactNode } from "react";
-import { quoteCard } from "@/example-to-delete/server-functions/quote-card";
+import { quoteCard } from "./server-functions/quote-card";
 
 function QuoteStream({ quotePromise }: { quotePromise: Promise<ReactNode> }) {
   const content = use(quotePromise);

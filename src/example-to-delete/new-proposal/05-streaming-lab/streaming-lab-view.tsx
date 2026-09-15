@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, Suspense, use, type ReactNode } from "react";
-import { telemetryStreamCard } from "@/example-to-delete/server-functions/streaming-demo";
+import { telemetryStreamCard } from "./server-functions/streaming-demo";
 
 type LabMode = "streaming" | "blocking";
 
@@ -78,12 +78,13 @@ export function StreamingLabView() {
         </div>
 
         <span
-          className={`text-[11px] font-sans font-medium px-2.5 py-1 rounded-md border transition-colors ${isStreaming
+          className={`text-[11px] font-sans font-medium px-2.5 py-1 rounded-md border transition-colors ${
+            isStreaming
               ? mode === "streaming"
                 ? "text-blue-800 bg-blue-50 border-blue-300 animate-pulse font-semibold"
                 : "text-rose-800 bg-rose-50 border-rose-300 animate-pulse font-semibold"
               : "text-blue-700 bg-blue-50 border-blue-200"
-            }`}
+          }`}
         >
           {isStreaming
             ? mode === "streaming"
@@ -108,20 +109,22 @@ export function StreamingLabView() {
               <button
                 type="button"
                 onClick={() => switchMode("streaming")}
-                className={`px-2 py-0.5 rounded transition cursor-pointer ${mode === "streaming"
+                className={`px-2 py-0.5 rounded transition cursor-pointer ${
+                  mode === "streaming"
                     ? "bg-white text-blue-700 font-semibold shadow-2xs"
                     : "text-slate-600 hover:text-slate-900"
-                  }`}
+                }`}
               >
                 Streaming (&lt;Suspense&gt;)
               </button>
               <button
                 type="button"
                 onClick={() => switchMode("blocking")}
-                className={`px-2 py-0.5 rounded transition cursor-pointer ${mode === "blocking"
+                className={`px-2 py-0.5 rounded transition cursor-pointer ${
+                  mode === "blocking"
                     ? "bg-white text-rose-700 font-semibold shadow-2xs"
                     : "text-slate-600 hover:text-slate-900"
-                  }`}
+                }`}
               >
                 Blocking SSR
               </button>
@@ -201,16 +204,18 @@ export function StreamingLabView() {
               <button
                 type="button"
                 onClick={() => handleLatencyChange(400)}
-                className={`px-1.5 py-0.5 rounded text-[10px] font-sans font-medium transition cursor-pointer ${latencyMs === 400 ? "bg-slate-800 text-white" : "bg-white text-slate-600 border border-slate-200"
-                  }`}
+                className={`px-1.5 py-0.5 rounded text-[10px] font-sans font-medium transition cursor-pointer ${
+                  latencyMs === 400 ? "bg-slate-800 text-white" : "bg-white text-slate-600 border border-slate-200"
+                }`}
               >
                 400ms
               </button>
               <button
                 type="button"
                 onClick={() => handleLatencyChange(900)}
-                className={`px-1.5 py-0.5 rounded text-[10px] font-sans font-medium transition cursor-pointer ${latencyMs === 900 ? "bg-slate-800 text-white" : "bg-white text-slate-600 border border-slate-200"
-                  }`}
+                className={`px-1.5 py-0.5 rounded text-[10px] font-sans font-medium transition cursor-pointer ${
+                  latencyMs === 900 ? "bg-slate-800 text-white" : "bg-white text-slate-600 border border-slate-200"
+                }`}
               >
                 900ms
               </button>
@@ -220,20 +225,21 @@ export function StreamingLabView() {
               type="button"
               onClick={triggerFetch}
               disabled={isStreaming}
-              className={`px-2.5 py-1 rounded-md text-[11px] font-sans font-medium transition cursor-pointer shadow-2xs ${isStreaming
+              className={`px-2.5 py-1 rounded-md text-[11px] font-sans font-medium transition cursor-pointer shadow-2xs ${
+                isStreaming
                   ? "bg-slate-400 text-slate-200 cursor-wait"
                   : mode === "streaming"
-                    ? "bg-blue-600 hover:bg-blue-700 text-white"
-                    : "bg-rose-600 hover:bg-rose-700 text-white"
-                }`}
+                  ? "bg-blue-600 hover:bg-blue-700 text-white"
+                  : "bg-rose-600 hover:bg-rose-700 text-white"
+              }`}
             >
               {isStreaming
                 ? mode === "streaming"
                   ? "Streaming..."
                   : "Waiting TTFB..."
                 : mode === "streaming"
-                  ? "Trigger Stream ↻"
-                  : "Simulate TTFB ↻"}
+                ? "Trigger Stream ↻"
+                : "Simulate TTFB ↻"}
             </button>
           </div>
         </div>

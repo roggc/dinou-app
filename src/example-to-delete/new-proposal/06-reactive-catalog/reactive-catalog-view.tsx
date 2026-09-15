@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useDeferredValue, Suspense, use, useMemo, type ReactNode } from "react";
-import { filterCatalog } from "@/example-to-delete/server-functions/catalog-demo";
+import { filterCatalog } from "./server-functions/catalog-demo";
 
 const CATEGORIES = ["All", "React 19", "Server", "Web APIs"] as const;
 

@@ -4,7 +4,7 @@ import { useState, useTransition, useActionState } from "react";
 import {
   submitProgressiveFeedback,
   FeedbackEntry,
-} from "@/example-to-delete/server-functions/progressive-demo";
+} from "./server-functions/progressive-demo";
 
 export function ProgressiveActionsView() {
   const [entries, setEntries] = useState<FeedbackEntry[]>([
