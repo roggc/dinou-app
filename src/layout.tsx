@@ -1,5 +1,3 @@
-"use client";
-
 import type { ReactNode } from "react";
 import "@/globals.css";
 
@@ -9,7 +7,7 @@ export default function Layout({ children }: { children: ReactNode }) {
       <head>
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>Dinou app</title>
+        <title>Dinou App</title>
         <link rel="icon" type="image/png" href="/favicon.ico" />
         <link
           rel="apple-touch-icon"
@@ -31,7 +29,8 @@ export default function Layout({ children }: { children: ReactNode }) {
         <link rel="manifest" href="/site.webmanifest" />
         <link href="/styles.css" rel="stylesheet" precedence="default" />
       </head>
-      <body>{children}</body>
+      {/* you may want to edit the className */}
+      <body className="bg-slate-900 min-h-screen text-slate-100">{children}</body>
     </html>
   );
 }
