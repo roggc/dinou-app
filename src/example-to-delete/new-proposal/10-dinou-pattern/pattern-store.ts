@@ -1,6 +1,6 @@
 import { useSyncExternalStore } from "react";
 
-// Estado global puro nativo de React 19 usando useSyncExternalStore (0 dependencias externas)
+// Pure native React 19 global state using useSyncExternalStore (0 external dependencies)
 let tasksListKey = 0;
 const listeners = new Set<() => void>();
 
@@ -22,6 +22,6 @@ export function useTasksListKey(): number {
   return useSyncExternalStore(
     patternStore.subscribe,
     patternStore.getSnapshot,
-    patternStore.getSnapshot // Para compatibilidad SSR
+    patternStore.getSnapshot // For SSR compatibility
   );
 }

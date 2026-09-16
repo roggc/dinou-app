@@ -11,10 +11,10 @@ export default function PatternTaskUpdater({
   taskText?: string;
 }) {
   useEffect(() => {
-    // 🪄 Al montarse en el cliente tras la respuesta de la Server Function,
-    // actualiza el store global atómicamente.
+    // 🪄 When mounted on the client after the Server Function response,
+    // atomically updates the global store.
     patternStore.incrementTasksListKey();
   }, [id, taskText]);
 
-  return null; // Headless component: no emite DOM
+  return null; // Headless component: does not emit DOM
 }

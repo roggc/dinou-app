@@ -4,18 +4,18 @@ import type { ReactNode } from "react";
 import PatternTaskUpdater from "../components/pattern-updater";
 import PatternTasksList, { type PatternTaskItem } from "../components/pattern-tasks-list";
 
-// Base de datos simulada en memoria para el caso de uso 10
+// In-memory simulated database for use case 10
 export const patternTasksDb: PatternTaskItem[] = [
-  { id: "1", text: "Probar Dinou Pattern con React 19", createdAt: "10:00:00" },
+  { id: "1", text: "Test Dinou Pattern with React 19", createdAt: "10:00:00" },
   { id: "2", text: "Headless Client Component Streaming", createdAt: "10:05:00" },
 ];
 
 /**
- * 1. Mutación del Dinou Pattern:
- * Ejecuta la mutación en Node.js y retorna el componente Headless de cliente.
+ * 1. Dinou Pattern Mutation:
+ * Executes the mutation in Node.js and returns the Headless client component.
  */
 export async function addPatternTask(text: string): Promise<ReactNode> {
-  // Simular pequeña latencia de base de datos en Node.js (250ms)
+  // Simulate small database latency in Node.js (250ms)
   await new Promise((resolve) => setTimeout(resolve, 250));
 
   const trimmed = text.trim();
@@ -28,16 +28,16 @@ export async function addPatternTask(text: string): Promise<ReactNode> {
     });
   }
 
-  // 🪄 El servidor orquesta el cliente retornando el updater con id único
+  // 🪄 The server orchestrates the client by returning the updater with a unique id
   return <PatternTaskUpdater key={id} id={id} taskText={trimmed} />;
 }
 
 /**
- * 2. Consulta de datos:
- * Retorna las tareas renderizadas en servidor sobre Flight RPC.
+ * 2. Data Query:
+ * Returns the tasks rendered on the server over Flight RPC.
  */
 export async function fetchPatternTasks(): Promise<ReactNode> {
-  // Simular pequeña latencia de consulta (180ms)
+  // Simulate small query latency (180ms)
   await new Promise((resolve) => setTimeout(resolve, 180));
 
   return <PatternTasksList tasks={[...patternTasksDb]} />;

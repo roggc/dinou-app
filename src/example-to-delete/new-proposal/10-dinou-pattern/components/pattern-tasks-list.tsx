@@ -10,7 +10,7 @@ export default function PatternTasksList({ tasks }: { tasks: PatternTaskItem[] }
   if (!tasks || tasks.length === 0) {
     return (
       <div className="h-full flex items-center justify-center p-4 text-slate-400 text-xs italic bg-slate-50/50 rounded-lg border border-dashed border-slate-200">
-        No hay tareas en el almacén. ¡Añade una arriba!
+        No tasks in the store. Add one above!
       </div>
     );
   }

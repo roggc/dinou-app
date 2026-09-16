@@ -22,8 +22,8 @@ export function PatternView() {
   const [mutationPromise, setMutationPromise] = useState<Promise<ReactNode> | null>(null);
   const [tasksPromise, setTasksPromise] = useState<Promise<ReactNode>>(() => fetchPatternTasks());
 
-  // Cuando el Headless Updater incrementa tasksListKey en el store,
-  // pedimos la nueva lista al servidor (Flight streaming)
+  // When the Headless Updater increments tasksListKey in the store,
+  // we request the new list from the server (Flight streaming)
   useEffect(() => {
     if (tasksListKey > 0) {
       setTasksPromise(fetchPatternTasks());
@@ -131,7 +131,7 @@ export function PatternView() {
               type="text"
               value={text}
               onChange={(e) => setText(e.target.value)}
-              placeholder="Nueva tarea para el Dinou Pattern..."
+              placeholder="New task for the Dinou Pattern..."
               disabled={isMutating}
               className="flex-1 px-2 py-0.5 text-[11px] font-sans rounded border border-slate-200 bg-white focus:outline-none focus:ring-1 focus:ring-purple-500/30 focus:border-purple-500 placeholder:text-slate-400"
             />
@@ -144,7 +144,7 @@ export function PatternView() {
                   : "bg-purple-600 hover:bg-purple-700 text-white"
               }`}
             >
-              {isMutating ? "Enviando..." : "Add Task +"}
+              {isMutating ? "Adding..." : "Add Task +"}
             </button>
           </form>
         </div>
