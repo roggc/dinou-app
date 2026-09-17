@@ -76,7 +76,7 @@ export default function NewProposal5Page({ initialTasks, serverSlot }: NewPropos
                     Dinou
                   </span>
                   <span className="text-[11px] font-sans font-medium text-slate-400 group-hover:text-slate-600 transition-colors">
-                    v6.0.1
+                    v6.1.0
                   </span>
                 </div>
                 <svg
@@ -175,9 +175,8 @@ export default function NewProposal5Page({ initialTasks, serverSlot }: NewPropos
                 </ViewTransition>
               )}
               <span
-                className={`relative z-10 transition-colors font-sans font-medium ${
-                  activeCase === "particles" ? "text-slate-900" : "text-slate-500 hover:text-slate-800"
-                }`}
+                className={`relative z-10 transition-colors font-sans font-medium ${activeCase === "particles" ? "text-slate-900" : "text-slate-500 hover:text-slate-800"
+                  }`}
               >
                 1. Kinetic Flow
               </span>
@@ -193,9 +192,8 @@ export default function NewProposal5Page({ initialTasks, serverSlot }: NewPropos
                 </ViewTransition>
               )}
               <span
-                className={`relative z-10 transition-colors font-sans font-medium ${
-                  activeCase === "synth" ? "text-slate-900" : "text-slate-500 hover:text-slate-800"
-                }`}
+                className={`relative z-10 transition-colors font-sans font-medium ${activeCase === "synth" ? "text-slate-900" : "text-slate-500 hover:text-slate-800"
+                  }`}
               >
                 2. Audio Synth
               </span>
@@ -211,9 +209,8 @@ export default function NewProposal5Page({ initialTasks, serverSlot }: NewPropos
                 </ViewTransition>
               )}
               <span
-                className={`relative z-10 transition-colors font-sans font-medium ${
-                  activeCase === "rsc" ? "text-slate-900" : "text-slate-500 hover:text-slate-800"
-                }`}
+                className={`relative z-10 transition-colors font-sans font-medium ${activeCase === "rsc" ? "text-slate-900" : "text-slate-500 hover:text-slate-800"
+                  }`}
               >
                 3. Server Function + Suspense
               </span>
@@ -229,9 +226,8 @@ export default function NewProposal5Page({ initialTasks, serverSlot }: NewPropos
                 </ViewTransition>
               )}
               <span
-                className={`relative z-10 transition-colors font-sans font-medium ${
-                  activeCase === "actions" ? "text-slate-900" : "text-slate-500 hover:text-slate-800"
-                }`}
+                className={`relative z-10 transition-colors font-sans font-medium ${activeCase === "actions" ? "text-slate-900" : "text-slate-500 hover:text-slate-800"
+                  }`}
               >
                 4. Optimistic Tasks
               </span>
@@ -247,9 +243,8 @@ export default function NewProposal5Page({ initialTasks, serverSlot }: NewPropos
                 </ViewTransition>
               )}
               <span
-                className={`relative z-10 transition-colors font-sans font-medium ${
-                  activeCase === "streaming" ? "text-slate-900" : "text-slate-500 hover:text-slate-800"
-                }`}
+                className={`relative z-10 transition-colors font-sans font-medium ${activeCase === "streaming" ? "text-slate-900" : "text-slate-500 hover:text-slate-800"
+                  }`}
               >
                 5. Streaming Lab
               </span>
@@ -265,9 +260,8 @@ export default function NewProposal5Page({ initialTasks, serverSlot }: NewPropos
                 </ViewTransition>
               )}
               <span
-                className={`relative z-10 transition-colors font-sans font-medium ${
-                  activeCase === "catalog" ? "text-slate-900" : "text-slate-500 hover:text-slate-800"
-                }`}
+                className={`relative z-10 transition-colors font-sans font-medium ${activeCase === "catalog" ? "text-slate-900" : "text-slate-500 hover:text-slate-800"
+                  }`}
               >
                 6. Reactive Catalog
               </span>
@@ -283,9 +277,8 @@ export default function NewProposal5Page({ initialTasks, serverSlot }: NewPropos
                 </ViewTransition>
               )}
               <span
-                className={`relative z-10 transition-colors font-sans font-medium ${
-                  activeCase === "slot" ? "text-slate-900" : "text-slate-500 hover:text-slate-800"
-                }`}
+                className={`relative z-10 transition-colors font-sans font-medium ${activeCase === "slot" ? "text-slate-900" : "text-slate-500 hover:text-slate-800"
+                  }`}
               >
                 7. RSC Slot Composition
               </span>
@@ -301,9 +294,8 @@ export default function NewProposal5Page({ initialTasks, serverSlot }: NewPropos
                 </ViewTransition>
               )}
               <span
-                className={`relative z-10 transition-colors font-sans font-medium ${
-                  activeCase === "progressive" ? "text-slate-900" : "text-slate-500 hover:text-slate-800"
-                }`}
+                className={`relative z-10 transition-colors font-sans font-medium ${activeCase === "progressive" ? "text-slate-900" : "text-slate-500 hover:text-slate-800"
+                  }`}
               >
                 8. Progressive Forms
               </span>
@@ -319,9 +311,8 @@ export default function NewProposal5Page({ initialTasks, serverSlot }: NewPropos
                 </ViewTransition>
               )}
               <span
-                className={`relative z-10 transition-colors font-sans font-medium ${
-                  activeCase === "context" ? "text-slate-900" : "text-slate-500 hover:text-slate-800"
-                }`}
+                className={`relative z-10 transition-colors font-sans font-medium ${activeCase === "context" ? "text-slate-900" : "text-slate-500 hover:text-slate-800"
+                  }`}
               >
                 9. Server Context
               </span>
@@ -337,9 +328,8 @@ export default function NewProposal5Page({ initialTasks, serverSlot }: NewPropos
                 </ViewTransition>
               )}
               <span
-                className={`relative z-10 transition-colors font-sans font-medium ${
-                  activeCase === "pattern" ? "text-slate-900" : "text-slate-500 hover:text-slate-800"
-                }`}
+                className={`relative z-10 transition-colors font-sans font-medium ${activeCase === "pattern" ? "text-slate-900" : "text-slate-500 hover:text-slate-800"
+                  }`}
               >
                 10. Dinou Pattern
               </span>
