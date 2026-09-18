@@ -76,7 +76,7 @@ export default function NewProposal5Page({ initialTasks, serverSlot }: NewPropos
                     Dinou
                   </span>
                   <span className="text-[11px] font-sans font-medium text-slate-400 group-hover:text-slate-600 transition-colors">
-                    v6.1.0
+                    v6.1.1
                   </span>
                 </div>
                 <svg
