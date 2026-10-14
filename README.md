@@ -220,4 +220,4 @@ npm run export-static
 ## 📚 Learn More
 
 - [Dinou Documentation](https://dinou.dev) - Official guides, tutorials, and API reference.
-- [Dinou GitHub Repository](https://github.com/roggc/dinou) - Star, contribute, or open issues.
+- [Dinou GitHub Repository](https://github.com/roggc/dinou) - Star the repo or open issues.
