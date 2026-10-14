@@ -63,7 +63,7 @@ export default function NewProposal5Page({ initialTasks, serverSlot }: NewPropos
                 href="https://dinou.dev"
                 target="_blank"
                 rel="noreferrer"
-                title="Open Dinou v6 documentation (dinou.dev)"
+                title="Open Dinou v7 documentation (dinou.dev)"
                 className="group flex items-center gap-2 px-2.5 py-1.5 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 hover:border-slate-300 transition cursor-pointer shadow-xs"
               >
                 <img
@@ -76,7 +76,7 @@ export default function NewProposal5Page({ initialTasks, serverSlot }: NewPropos
                     Dinou
                   </span>
                   <span className="text-[11px] font-sans font-medium text-slate-400 group-hover:text-slate-600 transition-colors">
-                    v6.1.1
+                    v7.0.0
                   </span>
                 </div>
                 <svg
