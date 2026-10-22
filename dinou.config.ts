@@ -1,6 +1,6 @@
 import { defineConfig } from "dinou/config";
 
 export default defineConfig({
-    // Configuración de Dinou
+    // Press Ctrl+Space (Cmd+Space on Mac) to see available options & autocomplete
 
 });
