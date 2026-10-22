@@ -150,7 +150,7 @@
     "eject": "dinou eject"
   },
   "dependencies": {
-    "dinou": "^8.0.2",
+    "dinou": "^8.0.3",
     "react": "^19.3.0",
     "react-dom": "^19.3.0"
   },
