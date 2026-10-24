@@ -76,7 +76,7 @@ export default function NewProposal5Page({ initialTasks, serverSlot }: NewPropos
                     Dinou
                   </span>
                   <span className="text-[11px] font-sans font-medium text-slate-400 group-hover:text-slate-600 transition-colors">
-                    v8.0.3
+                    v8.1.0
                   </span>
                 </div>
                 <svg
@@ -114,7 +114,7 @@ export default function NewProposal5Page({ initialTasks, serverSlot }: NewPropos
                     React
                   </span>
                   <span className="text-[11px] font-sans font-medium text-slate-400 group-hover:text-slate-600 transition-colors">
-                    v19.3.0
+                    v19.3.1
                   </span>
                 </div>
                 <svg
