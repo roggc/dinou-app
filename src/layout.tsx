@@ -1,14 +1,14 @@
-import type { ReactNode } from "react";
+import type { LayoutProps } from "./dinou";
 import "@/globals.css";
 
-export default function Layout({ children }: { children: ReactNode }) {
+export default function Layout({ children }: LayoutProps) {
   return (
     <html lang="en">
       <head>
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>Dinou App</title>
-        <link rel="icon" type="image/png" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.ico" />
         <link
           rel="apple-touch-icon"
           sizes="180x180"
