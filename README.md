@@ -2,7 +2,7 @@
 
 This project was bootstrapped with [`create-dinou`](https://github.com/roggc/dinou).
 
-It is a full-stack **React 19** application powered by **Dinou**, built around a 0-Fork Dual-Bundle AOT architecture, native React Server Components (RSC), W3C Web Streams, end-to-end type-safe routing, 3D layered caching, and universal "Deploy Everywhere" portability with reversible `eject` / `uneject`.
+It is a full-stack **React 19** application powered by **Dinou**, featuring native React Server Components (RSC), progressive streaming SSR, end-to-end compile-time type-safe routing, 3D layered caching & Partial Prerendering (PPR), and universal "Deploy Everywhere" portability with reversible `eject` / `uneject`.
 
 ---
 
@@ -16,7 +16,7 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000) in your browser to see your application.
 
-> **Port collision handling:** If port `3000` is already in use, Dinou automatically prompts an interactive port selector to launch on the next available port (e.g. `3001`, `3002`).
+> **Port collision handling:** If port `3000` (or its HMR port `3001`) is already in use, Dinou automatically prompts an interactive port selector to launch on the next available port pair (e.g. `3002`).
 
 Start editing by modifying `src/page.tsx`. Dinou serves dev bundles via an in-memory Virtual File System (VFS) with fast HMR, live `.env*` / `tsconfig.json` / `dinou.config.*` reloading, and automatic route-type generation.
 
@@ -73,6 +73,8 @@ Dinou scans `src/` automatically in dev and production builds (or manually via `
 `<Link>` and `useRouter()` autocomplete and validate static routes, dynamic `[param]` patterns with typed `params`, and relative targets:
 
 ```tsx
+"use client";
+
 import { Link, useRouter } from "dinou";
 
 export default function Nav({ slug }: { slug: string }) {
@@ -134,7 +136,7 @@ Dinou is **bundler-agnostic**, supporting **Esbuild** (default), **Rollup**, and
 npm run dev              # Default: Esbuild with in-memory VFS
 npm run dev:rollup       # Development with Rollup
 npm run dev:webpack      # Development with Webpack
-npx dinou typegen        # Regenerate route types & contextual "./dinou" modules
+npm run typegen          # Regenerate route types & contextual "./dinou" modules
 ```
 
 ### Production Build & Start (Node.js)
@@ -158,52 +160,52 @@ npm run export-static
 ```
 
 ### Universal Targets ("Deploy Everywhere")
-Every target accepts `:esbuild`, `:rollup`, or `:webpack` suffixes:
+Every target works via `npm run <script>` or `npx dinou <command>` and accepts `:esbuild`, `:rollup`, or `:webpack` suffixes:
 
-- **Netlify Functions v2 (AOT Dual-Bundle):**
+- **Netlify Functions v2 (Single-File AOT Bundle):**
   ```bash
-  npx dinou build:netlify
+  npm run build:netlify        # or: npx dinou build:netlify
   ```
 - **Cloudflare Workers (Wrangler + Static Assets + KV):**
   ```bash
-  npx dinou build:cloudflare
+  npm run build:cloudflare     # or: npx dinou build:cloudflare
   ```
 - **Deno / Deno Deploy:**
   ```bash
-  npx dinou build:deno
-  npx dinou start:deno
-  # Or compile a standalone binary:
-  npx dinou build:deno:compile
+  npm run build:deno
+  npm run start:deno
+  # Or compile a standalone binary (outputs dist/deno-server):
+  npm run build:deno:compile
   ```
 - **Bun:**
   ```bash
-  npx dinou build:bun
-  npx dinou start:bun
+  npm run build:bun            # or build:bun:pure (100% Bun, no Node.js required)
+  npm run start:bun
   # Or compile a standalone single binary (outputs dist/server):
-  npx dinou build:bun:compile
+  npm run build:bun:compile    # or build:bun:pure:compile
   ```
 
 ### Reversible Eject & Uneject
 ```bash
 npm run eject            # Copy framework source into ./dinou for full ownership
-npm run uneject          # Transactionally restore node_modules/dinou & remove ./dinou
+npm run uneject          # (Added after eject) Transactionally restore node_modules/dinou & remove ./dinou
 ```
 
 ---
 
 ## ⚡ Key Features
 
-- **0-Fork Dual-Bundle AOT Engine:** Compiles an in-memory dual-bundle pipeline (`rsc-engine` + `ssr-engine`) with single-execution inline RSC streaming, zero subprocess IPC overhead, and minimal memory footprint.
+- **Single-Pass Inline RSC Streaming:** Evaluates layouts and pages once per request and streams Flight payloads inline over W3C Web Streams with minimal memory footprint and zero hydration mismatches.
 - **Native React 19 & Web Streams:** Built from the ground up for React 19 Server Components, progressive `<Suspense>` streaming, un-awaited `Promise` props (`use(promise)`), and the React Compiler (`babel-plugin-react-compiler` enabled by default in production).
 - **3D Layered Caching & Partial Prerendering:**
   - **Horizontal Segmentation:** Persistent `layout.tsx` shells with independent `layout_functions.ts` caching and zero remounts across navigations.
   - **Vertical Segmentation (`<DinouCacheSlot>`):** Component-level Micro-ISR and targeted client `refreshSlot()`.
-  - **Temporal Segmentation (PPR):** Instant static `shell.html` (0ms TTFB) with per-segment `export const ppr = true` and `noDynamic()` opt-outs.
+  - **Temporal Segmentation (PPR):** Instant static shell (`shell.html`, 0ms TTFB) with streaming `<Suspense>` holes, per-segment `export const ppr = true`, and `noDynamic()` opt-outs.
 - **Single-Source-of-Truth Caching & Revalidation:**
   - `export const revalidate = 60;` in **seconds** (`false`/omitted = SSG, `0` = Dynamic SSR, `>= 1` = ISR).
   - Surgical invalidation from `"dinou/server"`: `revalidatePage()`, `revalidateLayout()`, `revalidatePath()`, and `revalidateTag()`.
   - Built-in storage adapters: `FileSystemStorage`, `RedisStorage`, `CloudflareKVStorage`, `DenoKVStorage`, and `MemoryStorage`.
-- **Server Functions (`"use server"`):** Module-level and inline RPC actions, `<form action>` progressive enhancement, and streamed JSX/Server Component returns.
+- **Server Functions (`"use server"`):** Module-level, function-body, and inline RPC actions, `<form action>` progressive enhancement, and streamed JSX/Server Component returns.
 - **Request Context & Zero-Leak Env Vars:**
   - Synchronous `getContext()` (`req`, `res`, unified multi-runtime `env`, `ctx`) via `AsyncLocalStorage` across Server Components, loaders, Server Functions, and plugins.
   - Full `.env*` hierarchy with dev hot-reload; private secrets stay server-only while `DINOU_PUBLIC_*` inlines safely for Client Components.
@@ -217,13 +219,13 @@ npm run uneject          # Transactionally restore node_modules/dinou & remove .
 ### Node.js (Docker, VPS, PM2)
 ```bash
 npm run build
-node .dinou/node/server.mjs
+npm start                    # or: node .dinou/node/server.mjs
 ```
 
 ### Netlify Functions v2 (`netlify.toml`)
 ```toml
 [build]
-  command = "npm run build:netlify"
+  command = "npm run build:netlify" # or "npm run build"
   publish = ".dinou/dist3"
 
 [functions]
@@ -244,17 +246,27 @@ directory = ".dinou/cloudflare/assets"
 binding = "ASSETS"
 run_worker_first = true
 html_handling = "none"
+
+# Optional: Bind a KV namespace for persistent global ISR/ISG caching
+# [[kv_namespaces]]
+# binding = "DINOU_CACHE"
+# id = "<YOUR_KV_NAMESPACE_ID>"
 ```
 
 ```bash
-npx dinou build:cloudflare
+npm run build:cloudflare
 npx wrangler deploy
 ```
 
-### Standalone Native Binary (Bun / Deno)
+### Standalone Native Binary (Bun / Node.js / Deno)
 ```bash
-npx dinou build:bun:compile   # or: npx dinou build:node:compile / build:deno:compile
+# Bun / Node.js (outputs dist/server)
+npm run build:bun:compile    # or: build:bun:pure:compile / build:node:compile
 ./dist/server
+
+# Deno (outputs dist/deno-server)
+npm run build:deno:compile
+./dist/deno-server
 ```
 
 ### Static Hosting (GitHub Pages, Cloudflare Pages, S3, Nginx)
