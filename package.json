@@ -155,7 +155,7 @@
     "eject": "dinou eject"
   },
   "dependencies": {
-    "dinou": "file:../dinou.tgz",
+    "dinou": "^10.0.0",
     "react": "^19.3.1",
     "react-dom": "^19.3.1"
   },
