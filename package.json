@@ -156,11 +156,11 @@
   },
   "dependencies": {
     "dinou": "^10.0.3",
-    "react": "^19.3.1",
-    "react-dom": "^19.3.1"
+    "react": "~19.3.1",
+    "react-dom": "~19.3.1"
   },
   "devDependencies": {
-    "@types/react": "^19.3.0",
-    "@types/react-dom": "^19.3.0"
+    "@types/react": "~19.3.0",
+    "@types/react-dom": "~19.3.0"
   }
 }
