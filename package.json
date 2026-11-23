@@ -155,12 +155,12 @@
     "eject": "dinou eject"
   },
   "dependencies": {
-    "dinou": "^10.0.2",
-    "react": "^19.3.1",
-    "react-dom": "^19.3.1"
+    "dinou": "^10.0.3",
+    "react": "~19.3.1",
+    "react-dom": "~19.3.1"
   },
   "devDependencies": {
-    "@types/react": "^19.3.0",
-    "@types/react-dom": "^19.3.0"
+    "@types/react": "~19.3.0",
+    "@types/react-dom": "~19.3.0"
   }
 }
